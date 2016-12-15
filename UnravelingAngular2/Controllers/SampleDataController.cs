@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 namespace UnravelingAngular2.Controllers
@@ -26,6 +25,17 @@ namespace UnravelingAngular2.Controllers
             });
         }
 
+        [HttpGet("[action]")]
+        public IEnumerable<Dive> Dives()
+        {
+            return new List<Dive>
+            {
+                new Dive {Site="Abu Gotta Ramada", Location="Hurghada, Egypt", Depth = 72, Time = 54},
+                new Dive {Site="Ponte Mahoon", Location="Maehbourg, Mauritius", Depth = 54, Time = 38},
+                new Dive {Site="Molnar Cave", Location="Budapest, Hungary", Depth = 98, Time = 62}
+            };
+        }
+
         public class WeatherForecast
         {
             public string DateFormatted { get; set; }
@@ -39,6 +49,14 @@ namespace UnravelingAngular2.Controllers
                     return 32 + (int)(TemperatureC / 0.5556);
                 }
             }
+        }
+
+        public class Dive
+        {
+            public string Site { get; set; }
+            public string Location { get; set; }
+            public int Depth { get; set; }
+            public int Time { get; set; }
         }
     }
 }
